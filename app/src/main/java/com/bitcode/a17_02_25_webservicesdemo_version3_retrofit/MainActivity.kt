@@ -23,11 +23,19 @@ class MainActivity : AppCompatActivity() {
         var usersService = UsersService.getInstance()
 
         activityMainBinding.btnFetchData.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                var apiResponse = usersService.getAllUsers(1)
 
+            //worker or background thread created -- by switching scope to IO from MainThread
+            CoroutineScope(Dispatchers.IO).launch {
+                //getAllUsers
+                var apiResponse = usersService.getAllUsers(1)
                 Log.e("tag", "${apiResponse.users}")
 
+                //getUserById
+                var apiResponseForUser = usersService.getUserById(5)
+
+                Log.e("tag", "${apiResponseForUser.user}")
+
+            //switching back from IO to MainThread for binding of data purpose
                 withContext(coroutineContext) {
                     activityMainBinding.txtViewForFirstName.text = apiResponse.users[0].firstName
                 }

@@ -17,5 +17,4 @@ data class APIResponse(
     var users : ArrayList<User>,
 
     var support : Support
-
 )
