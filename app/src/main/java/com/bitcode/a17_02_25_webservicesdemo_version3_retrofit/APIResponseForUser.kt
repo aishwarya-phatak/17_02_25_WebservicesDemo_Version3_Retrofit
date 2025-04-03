@@ -5,6 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class APIResponseForUser(
     @SerializedName("data")
     var user : User,
-
     var support: Support
 )

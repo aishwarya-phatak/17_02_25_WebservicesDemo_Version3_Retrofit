@@ -35,6 +35,21 @@ class MainActivity : AppCompatActivity() {
 
                 Log.e("tag", "${apiResponseForUser.user}")
 
+                //post User
+                var postUser = PostUser("morpheus", "leader")
+                var postUserResponse = usersService.postUser(postUser)
+
+                Log.e("tag", "$postUserResponse")
+
+                //put User - update
+                var putUser = PutUser("morpheus", "zion resident")
+
+                var postResponseForUpdateUser = usersService.updateUser(putUser, 2)
+                Log.e("tag","Put --- $postResponseForUpdateUser")
+
+                //delete user
+                var deleteUserResponse = usersService.deleteUser(2)
+
             //switching back from IO to MainThread for binding of data purpose
                 withContext(coroutineContext) {
                     activityMainBinding.txtViewForFirstName.text = apiResponse.users[0].firstName
