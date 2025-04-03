@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 //delete user
                 var deleteUserResponse = usersService.deleteUser(2)
 
-            //switching back from IO to MainThread for binding of data purpose
+                //switching back from IO to MainThread for binding of data purpose
                 withContext(coroutineContext) {
                     activityMainBinding.txtViewForFirstName.text = apiResponse.users[0].firstName
                 }
